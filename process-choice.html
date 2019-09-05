@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Process</title>
+  <meta name="keywords" content="text, test">
+  <meta name="description" content="very long text description">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/custom.js"></script>
+</head>
+<body>
+
+<section class="page process">
+  <div class="page-bg"><img src="img/main-bg.png"></div>
+  <div class="container">
+    <div class="process__steps">
+      <div class="process-step process-step_current">
+        товарный знак
+      </div>
+      <div class="process-step">
+        данные заявителя
+      </div>
+      <div class="process-step">
+        подтверждение
+      </div>
+      <div class="process-step">
+        Сформированые документы
+      </div>
+    </div>
+    <div class="process-title">Выбирете тип обозначения:</div>
+    <div class="process-half">
+      <form method="get" enctype="multipart/form-data" id="lForm">
+        <div class="process-choice__type-row">
+          <div class="process-choice-type-box">
+            <input type="radio" name="logoType" id="logoTypeOne" class="inp-r-c">
+            <label for="logoTypeOne" class="label-process-choice-type">
+              <img src="img/process-choice-type-1.png" alt="">
+            </label>
+            <div class="process-choice-type-box__text">Словесный</div>
+          </div>
+          <div class="process-choice-type-box">
+            <input type="radio" name="logoType" id="logoTypeTwo" class="inp-r-c" checked>
+            <label for="logoTypeTwo" class="label-process-choice-type">
+              <img src="img/process-choice-type-2.png" alt="">
+            </label>
+            <div class="process-choice-type-box__text">Изобразительный</div>
+          </div>
+          <div class="process-choice-type-box">
+            <input type="radio" name="logoType" id="logoTypeThree" class="inp-r-c">
+            <label for="logoTypeThree" class="label-process-choice-type">
+              <img src="img/process-choice-type-3.png" alt="">
+            </label>
+            <div class="process-choice-type-box__text">Комбинированный</div>
+          </div>
+        </div>
+        <div class="inp-row">
+          <input type="text" name="lName" id="lName" class="inp" placeholder="Название">
+        </div>
+        <div class="process-choice-type-logo-box">
+          <div class="process-choice-text-white">
+            Логотип (если есть)
+          </div>
+          <div class="process-choice-type-logo">
+            <input type="file" name="lImg" id="lImg">
+            <label for="lImg" class="label-logo">
+              <img src="img/process-logo-placeholder.png">
+            </label>
+            <a href="#" class="process-choice-type-logo__upload process-choice-text-white">
+              <img src="img/process-upload.png">
+              <span>Загрузить</span>
+            </a>
+          </div>
+        </div>
+        <div class="inp-row">
+          <div class="inp-w-help">
+            <input type="text" name="lDescrption" id="lDescrption" class="inp" placeholder="Опишите ваш логотип">
+            <div class="inp-help">
+              ?
+              <div class="inp-help__text">
+                Подсказываем Вам как правильно подобрать цвета
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="process-choice-active-links">
+          <div><a href="#" class="process-choice-text-white">Пример 1 (активная ссылка)</a></div>
+          <div><a href="#" class="process-choice-text-white">Пример 2 (активная ссылка)</a></div>
+        </div>
+        <div class="inp-row">
+          <div class="inp-w-help">
+            <input type="text" name="lColor" id="lColor" class="inp" placeholder="Используемые цвета">
+            <div class="inp-help">
+              ?
+              <div class="inp-help__text">
+                Подсказываем Вам как правильно подобрать цвета
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inp-row">
+          <div class="inp-w-help">
+            <input type="text" name="lElems" id="lElems" class="inp" placeholder="Неохраняемые элементы">
+            <div class="inp-help">
+              ?
+              <div class="inp-help__text">
+                Подсказываем Вам как правильно подобрать цвета
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="process-title process-title--sphere">Выберите сферы вашей деятельности</div>
+    <div class="process-sphere">
+      <div class="process-sphere__search">
+        <input type="search" name="sSearch" id="sSearch" class="process-sphere-search__box" placeholder="Поиск">
+        <div class="process-sphere-search__list">
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 01 химическое сырье</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 02 пигментная краска</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 03 ежедневные химические продукты</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Топливная смазка класса 04</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 05 медицина</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Металл класса 06</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 07 механическое оборудование</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 08 ручное оборудование</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 09 научный инструмент</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Медицинский прибор класса 10</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Тип 11 ламповый кондиционер</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 12 транспорта</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Тип 11 ламповый кондиционер</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 12 транспорта</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Тип 11 ламповый кондиционер</a>
+            </div>
+          </div>
+          <div class="process-sphere-category">
+            <div class="process-sphere-category__control">
+              <div class="process-sphere-category__open"></div>
+              <a href="#" class="process-sphere-category__name">Класс 12 транспорта</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="process-sphere__content">
+        <div class="process-sphere-content__control">
+          <div class="process-sphere-content__title">Выбранная категория торговой марки</div>
+          <div class="process-sphere-content__clear">
+            Очистить всё
+            <img src="img/process-clear-all.png" alt="-">
+          </div>
+        </div>
+        <div class="process-sphere-item">
+          <div class="process-sphere-item__head">
+            <div class="process-sphere-item__arrow"></div>
+            <div class="process-sphere-item__title">Топливо и жир класса 04</div>
+            <div class="process-sphere-item__description">(всего 1 предмет, можно добавить 9 предметов, 300 юаней в
+              течение 10 штук)
+            </div>
+            <div class="process-sphere-item__delete">
+              <img src="img/process-clear.png" alt="x">
+            </div>
+          </div>
+          <div class="process-sphere-item__list">
+            <div class="process-sphere-subcategory">
+              <div class="process-sphere-subcategory__number">0401:</div>
+              <div class="process-sphere-subcategory__description">040011 Оружие для оружия</div>
+            </div>
+            <div class="process-sphere-subcategory">
+              <div class="process-sphere-subcategory__number">0401:</div>
+              <div class="process-sphere-subcategory__description">040011 Оружие для оружия</div>
+            </div>
+          </div>
+        </div>
+        <div class="process-sphere-item">
+          <div class="process-sphere-item__head">
+            <div class="process-sphere-item__arrow"></div>
+            <div class="process-sphere-item__title">Топливо и жир класса 04</div>
+            <div class="process-sphere-item__description">(всего 1 предмет, можно добавить 9 предметов, 300 юаней в
+              течение 10 штук)
+            </div>
+            <div class="process-sphere-item__delete">
+              <img src="img/process-clear.png" alt="x">
+            </div>
+          </div>
+          <div class="process-sphere-item__list">
+            <div class="process-sphere-subcategory">
+              <div class="process-sphere-subcategory__number">0401:</div>
+              <div class="process-sphere-subcategory__description">040011 Оружие для оружия</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-submit" type="submit" form="lForm">далее</button>
+  </div>
+</section>
+
+</body>
+</html>
