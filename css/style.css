@@ -589,6 +589,9 @@ input[type="file"]{
     border-radius: 4px;
     color: #373737;
 }
+.process-choice-active-links__description{
+    display: none;
+}
 /*Main*/
 .main{
     padding: 170px 0 130px 0;

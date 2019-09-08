@@ -7,7 +7,10 @@
   <meta name="keywords" content="text, test">
   <meta name="description" content="very long text description">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/custom.js"></script>
+  <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -30,22 +33,36 @@
     </div>
     <div class="process-title process-title--step2">Заполните данные заявителя</div>
     <div class="process-half">
-      <form method="get">
-        <div class="process-step2-r-c-b">
-          <div class="inp-row">
-            <input type="radio" name="11" id="11" class="inp-r-c">
-            <label for="11" class="label-r">Индивидуальный предприниматель</label>
-          </div>
-          <div class="inp-row">
-            <input type="radio" name="11" id="12" class="inp-r-c" checked>
-            <label for="12" class="label-r">Юридическое лицо</label>
-          </div>
+      <div class="process-step2-r-c-b">
+        <div class="inp-row">
+          <input type="radio" name="11" id="11" class="inp-r-c js-person" value="fiz">
+          <label for="11" class="label-r">Индивидуальный предприниматель</label>
         </div>
+        <div class="inp-row">
+          <input type="radio" name="11" id="12" class="inp-r-c js-person" checked value="yur">
+          <label for="12" class="label-r">Юридическое лицо</label>
+        </div>
+      </div>
+      <form method="get" id="fiz">
+        <div class="inp-row">
+          <input type="text" name="1" id="1" class="inp" placeholder="ФИО">
+        </div>
+        <div class="inp-row">
+          <input type="text" name="2" id="2" class="inp js-number" placeholder="ИНН">
+        </div>
+        <div class="inp-row">
+          <input type="text" name="3" id="3" class="inp" placeholder="ОГРНИП">
+        </div>
+        <div class="inp-row">
+          <input type="text" name="4" id="4" class="inp" placeholder="Адрес регистрации">
+        </div>
+      </form>
+      <form method="get" id="yur">
         <div class="inp-row">
           <input type="text" name="1" id="1" class="inp" placeholder="Полное наименование организации">
         </div>
         <div class="inp-row">
-          <input type="text" name="2" id="2" class="inp" placeholder="ИНН">
+          <input type="text" name="2" id="2" class="inp js-number" placeholder="ИНН">
         </div>
         <div class="inp-row">
           <input type="text" name="3" id="3" class="inp" placeholder="КПП">
@@ -59,13 +76,51 @@
         <div class="inp-row">
           <input type="text" name="6" id="6" class="inp" placeholder="Генеральный директор ФИО">
         </div>
-        <div class="submit-row">
-          <button class="btn-submit" type="submit">далее</button>
-        </div>
       </form>
+      <div class="submit-row">
+        <button class="btn-submit js-go-step-four" type="submit">далее</button>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+$( document ).ready(function() {
+//show hide forms
+  var showInps = $('.js-person:checked').val();
+  $('form').hide();
+  $('form#'+showInps).show();
+  $('.js-person').on('click',function () {
+    $('form').hide();
+    $('form#'+$(this).val()).show();
+    showInps = $(this).val();
+  });
+//  only numbers in field min 10 chars
+  $('.js-number').on('input', function (event) {
+    this.value = this.value.replace(/[^0-9]/g, '');
+  });
+  $('.js-number').on('blur', function (event) {
+    if($(this).val().length < 10){
+      $(this).focus();
+    }
+  });
+//  go next
+  $('.js-go-step-four').on('click',function (e) {
+    e.preventDefault();
+    var fData = $('form#'+showInps).serialize();
+    console.log(fData);
+    $.ajax({
+      method: "POST",
+      url: "some.php",
+      data: fData,
+      success : function() {
+        window.location.href = "process-pay.html";
+      }
+    })
+  })
+
+});
+</script>
 
 </body>
 </html>

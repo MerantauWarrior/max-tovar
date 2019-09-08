@@ -7,7 +7,10 @@
   <meta name="keywords" content="text, test">
   <meta name="description" content="very long text description">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/custom.js"></script>
+  <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -33,38 +36,38 @@
       <form method="get" enctype="multipart/form-data" id="lForm">
         <div class="process-choice__type-row">
           <div class="process-choice-type-box">
-            <input type="radio" name="logoType" id="logoTypeOne" class="inp-r-c">
+            <input type="radio" name="logoType" id="logoTypeOne" class="inp-r-c js-type-switch" value="word" checked>
             <label for="logoTypeOne" class="label-process-choice-type">
               <img src="img/process-choice-type-1.png" alt="">
             </label>
             <div class="process-choice-type-box__text">Словесный</div>
           </div>
           <div class="process-choice-type-box">
-            <input type="radio" name="logoType" id="logoTypeTwo" class="inp-r-c" checked>
+            <input type="radio" name="logoType" id="logoTypeTwo" class="inp-r-c js-type-switch" value="image">
             <label for="logoTypeTwo" class="label-process-choice-type">
               <img src="img/process-choice-type-2.png" alt="">
             </label>
             <div class="process-choice-type-box__text">Изобразительный</div>
           </div>
           <div class="process-choice-type-box">
-            <input type="radio" name="logoType" id="logoTypeThree" class="inp-r-c">
+            <input type="radio" name="logoType" id="logoTypeThree" class="inp-r-c js-type-switch" value="combined">
             <label for="logoTypeThree" class="label-process-choice-type">
               <img src="img/process-choice-type-3.png" alt="">
             </label>
             <div class="process-choice-type-box__text">Комбинированный</div>
           </div>
         </div>
-        <div class="inp-row">
+        <div class="inp-row js-type js-word js-image js-combined">
           <input type="text" name="lName" id="lName" class="inp" placeholder="Название">
         </div>
-        <div class="process-choice-type-logo-box">
+        <div class="process-choice-type-logo-box js-type js-image js-combined">
           <div class="process-choice-text-white">
             Логотип (если есть)
           </div>
           <div class="process-choice-type-logo">
-            <input type="file" name="lImg" id="lImg">
+            <input type="file" name="lImg" id="lImg" accept="image/*">
             <label for="lImg" class="label-logo">
-              <img src="img/process-logo-placeholder.png">
+              <img src="img/process-logo-placeholder.png" id="lPreview">
             </label>
             <a href="#" class="process-choice-type-logo__upload process-choice-text-white">
               <img src="img/process-upload.png">
@@ -72,7 +75,7 @@
             </a>
           </div>
         </div>
-        <div class="inp-row">
+        <div class="inp-row js-type js-image js-combined">
           <div class="inp-w-help">
             <input type="text" name="lDescrption" id="lDescrption" class="inp" placeholder="Опишите ваш логотип">
             <div class="inp-help">
@@ -83,11 +86,23 @@
             </div>
           </div>
         </div>
-        <div class="process-choice-active-links">
-          <div><a href="#" class="process-choice-text-white">Пример 1 (активная ссылка)</a></div>
-          <div><a href="#" class="process-choice-text-white">Пример 2 (активная ссылка)</a></div>
+        <div class="process-choice-active-links js-type js-image js-combined">
+          <div>
+            <a href="#" class="process-choice-text-white">Пример 1 (активная ссылка)</a>
+            <div class="process-choice-active-links__description">
+              <img src="img/process-choice-type-3.png" alt="">
+              <div class="process-choice-text-white">пример (структура: картинка небольшая + текст)</div>
+            </div>
+          </div>
+          <div>
+            <a href="#" class="process-choice-text-white">Пример 2 (активная ссылка)</a>
+            <div class="process-choice-active-links__description">
+              <img src="img/process-choice-type-2.png" alt="">
+              <div class="process-choice-text-white">пример (структура: картинка небольшая + текст)</div>
+            </div>
+          </div>
         </div>
-        <div class="inp-row">
+        <div class="inp-row js-type js-image js-combined">
           <div class="inp-w-help">
             <input type="text" name="lColor" id="lColor" class="inp" placeholder="Используемые цвета">
             <div class="inp-help">
@@ -98,7 +113,7 @@
             </div>
           </div>
         </div>
-        <div class="inp-row">
+        <div class="inp-row js-type js-combined">
           <div class="inp-w-help">
             <input type="text" name="lElems" id="lElems" class="inp" placeholder="Неохраняемые элементы">
             <div class="inp-help">
@@ -264,9 +279,65 @@
         </div>
       </div>
     </div>
-    <button class="btn-submit" type="submit" form="lForm">далее</button>
+    <button class="btn-submit js-go-step-three" type="submit" form="lForm">далее</button>
   </div>
 </section>
+
+<script>
+$( document ).ready(function() {
+
+  //show hide fields by selected type
+  var showInps = $('.js-type-switch:checked').val();
+  $('.js-type').hide();
+  $('.js-'+showInps).show();
+  $('.js-type-switch').on('click',function () {
+    $('.js-type').hide();
+    $('.js-'+$(this).val()).show();
+  });
+  //example links
+  $('.process-choice-active-links a').on('click', function (e) {
+    e.preventDefault();
+    $(this).siblings('.process-choice-active-links__description').slideToggle();
+  });
+  //logo preview
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#lPreview').attr('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#lImg").change(function(){
+    readURL(this);
+  });
+  //  go next
+  $('.js-go-step-three').on('click',function (e) {
+    e.preventDefault();
+    if( 0 === 1){
+      return false;
+    }else{
+      var name = $('#mName').val();
+      var tel = $('#mTel').val();
+      var email = $('#mEmail').val();
+      $.ajax({
+        method: "POST",
+        url: "some.php",
+        data: {
+          name: name,
+          tel: tel,
+          email: email
+        },
+        success : function() {
+          window.location.href = "process-info.html";
+        }
+      })
+    }
+  })
+
+});
+</script>
 
 </body>
 </html>

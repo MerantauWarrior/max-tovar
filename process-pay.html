@@ -7,7 +7,10 @@
   <meta name="keywords" content="text, test">
   <meta name="description" content="very long text description">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/custom.js"></script>
+  <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -33,11 +36,11 @@
     <form method="get">
       <div class="process-half">
         <div class="inp-row">
-          <input type="radio" name="11" id="300" class="inp-r-c">
+          <input type="radio" name="11" id="300" class="inp-r-c js-price" value="300">
           <label for="300" class="label-r">Распечатаю и подам самостоятельно в ФИПС - 300 руб</label>
         </div>
         <div class="inp-row">
-          <input type="radio" name="11" id="12" class="inp-r-c" checked>
+          <input type="radio" name="11" id="12" class="inp-r-c js-price" checked value="3500">
           <label for="12" class="label-r">
             <span class="label-r-c__text">Подать электронно и получить скидку 30% на гос. пошлину (выгода от
             9.900 руб на гос. пошлине) - 3500 руб</span>
@@ -47,7 +50,7 @@
           </label>
         </div>
         <div class="inp-row">
-          <input type="checkbox" name="15" id="7000" class="inp-r-c" checked>
+          <input type="checkbox" name="15" id="7000" class="inp-r-c js-price" value="7000" checked>
           <label for="7000" class="label-c">Провести полную проверку моего товарного знака на предмет возможных
             препятствий к регистрации (тождественные или сходные товарные знаки
             и заявки на ТЗ, международные ТЗ, нарушение ГК РФ) - 7000 руб
@@ -65,10 +68,32 @@
           </div>
         </div>
       </div>
-      <button class="btn-submit" type="submit">оплатить</button>
+      <button class="btn-submit js-go-pay" type="submit">оплатить</button>
     </form>
   </div>
 </section>
+
+<script>
+  $( document ).ready(function() {
+    //calculate price
+    var total = 0;
+    $('.js-price:checked').each(function(){
+      total += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this).val());
+    });
+    $('.js-price').change(function (){
+        total = 0;
+      $('.js-price:checked').each(function(){
+        total += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this).val());
+      });
+    });
+    //go payment system
+    $('.js-go-pay').on('click',function (e) {
+      e.preventDefault();
+      window.location.href = "https://kassa.yandex.ru/?price="+total;
+    })
+
+  });
+</script>
 
 </body>
 </html>
